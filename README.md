@@ -15,7 +15,7 @@ A secure and customizable password generator with a modern web interface and a P
 
 SecureByte/
 │── Backend/      # Flask API for password generation logic
-│── Frontend/     # HTML, CSS, JavaScript interface
+│── index.html    # Main Frontend interface (Root level)
 │── requirements.txt
 
 ---
@@ -37,7 +37,7 @@ python Backend/logic.py
 
 ### 4. Open the Frontend
 
-Open `Frontend/index.html` in your browser.
+Open `index.html` in your browser.
 
 ---
 

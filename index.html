@@ -318,7 +318,9 @@
          * Handles entropy generation, strength analysis, and UI orchestration.
          */
         const SecureByte = {
-            API_URL: 'http://127.0.0.1:5000',
+            API_URL: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+                     ? 'http://127.0.0.1:5000' 
+                     : '/api',
             CHARS: {
                 lower: 'abcdefghijklmnopqrstuvwxyz',
                 upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
