@@ -1,428 +1,487 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>CYPHER_GEN</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SecureByte | Glassmorphic Entropy</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <script id="tailwind-config">
         tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "outline-variant": "#3c494e",
-                      "on-primary-container": "#002200",
-                      "surface-container-low": "#1a1c20",
-                      "surface-variant": "#333539",
-                      "surface-container": "#1e2024",
-                      "on-error-container": "#ffdad6",
-                      "primary": "#39FF14",
-                      "surface-container-highest": "#333539",
-                      "surface": "#111318",
-                      "error-container": "#93000a",
-                      "error": "#ffb4ab",
-                      "on-surface-variant": "#bbc9cf",
-                      "secondary-container": "#7000ff",
-                      "on-tertiary-container": "#005b31",
-                      "secondary-fixed-dim": "#d1bcff",
-                      "on-secondary-container": "#ddcdff",
-                      "on-secondary-fixed": "#23005b",
-                      "surface-dim": "#111318",
-                      "on-secondary": "#3c0090",
-                      "on-tertiary-fixed-variant": "#00522c",
-                      "on-primary": "#003300",
-                      "on-surface": "#e2e2e8",
-                      "primary-container": "#2be80d",
-                      "on-primary-fixed": "#001f28",
-                      "surface-tint": "#39FF14",
-                      "on-error": "#690005",
-                      "secondary": "#d1bcff",
-                      "primary-fixed": "#b7eaff",
-                      "tertiary": "#00fc92",
-                      "surface-container-high": "#282a2e",
-                      "on-background": "#e2e2e8",
-                      "inverse-on-surface": "#2f3035",
-                      "tertiary-fixed": "#5bffa1",
-                      "inverse-primary": "#00677f",
-                      "tertiary-fixed-dim": "#00e383",
-                      "surface-container-lowest": "#0c0e12",
-                      "outline": "#859399",
-                      "on-primary-fixed-variant": "#004e60",
-                      "on-secondary-fixed-variant": "#5700c9",
-                      "secondary-fixed": "#e9ddff",
-                      "on-tertiary": "#00391d",
-                      "on-tertiary-fixed": "#00210e",
-                      "background": "#111318",
-                      "surface-bright": "#37393e",
-                      "inverse-surface": "#e2e2e8",
-                      "tertiary-container": "#00dc7f",
-                      "primary-fixed-dim": "#4cd6ff"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "gutter": "24px",
-                      "margin-md": "32px",
-                      "margin-xs": "8px",
-                      "container-max": "640px",
-                      "unit": "4px",
-                      "margin-sm": "16px",
-                      "margin-lg": "64px"
-              },
-              "fontFamily": {
-                      "h2": [
-                              "Space Grotesk"
-                      ],
-                      "mono-display": [
-                              "monospace"
-                      ],
-                      "label-caps": [
-                              "Space Grotesk"
-                      ],
-                      "h1": [
-                              "Space Grotesk"
-                      ],
-                      "body-lg": [
-                              "Inter"
-                      ],
-                      "display-lg": [
-                              "Space Grotesk"
-                      ],
-                      "body-md": [
-                              "Inter"
-                      ]
-              },
-              "fontSize": {
-                      "h2": [
-                              "24px",
-                              {
-                                      "lineHeight": "1.3",
-                                      "fontWeight": "600"
-                              }
-                      ],
-                      "mono-display": [
-                              "20px",
-                              {
-                                      "lineHeight": "1",
-                                      "letterSpacing": "0.05em",
-                                      "fontWeight": "500"
-                              }
-                      ],
-                      "label-caps": [
-                              "12px",
-                              {
-                                      "lineHeight": "1",
-                                      "letterSpacing": "0.1em",
-                                      "fontWeight": "700"
-                              }
-                      ],
-                      "h1": [
-                              "32px",
-                              {
-                                      "lineHeight": "1.2",
-                                      "letterSpacing": "-0.01em",
-                                      "fontWeight": "600"
-                              }
-                      ],
-                      "body-lg": [
-                              "18px",
-                              {
-                                      "lineHeight": "1.6",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "display-lg": [
-                              "48px",
-                              {
-                                      "lineHeight": "1.1",
-                                      "letterSpacing": "-0.02em",
-                                      "fontWeight": "700"
-                              }
-                      ],
-                      "body-md": [
-                              "16px",
-                              {
-                                      "lineHeight": "1.5",
-                                      "fontWeight": "400"
-                              }
-                      ]
-              }
-            },
-          }
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00F5FF",
+                        secondary: "#FF00FF",
+                        accent: "#7000FF",
+                        background: "#030308",
+                        "glass-bg": "rgba(255, 255, 255, 0.03)",
+                        "glass-border": "rgba(255, 255, 255, 0.12)",
+                    },
+                    fontFamily: {
+                        brand: ["Space Grotesk", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"],
+                    },
+                    animation: {
+                        'mesh-float': 'mesh 20s ease-in-out infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                    },
+                    keyframes: {
+                        mesh: {
+                            '0%, 100%': { transform: 'scale(1) translate(0, 0)' },
+                            '33%': { transform: 'scale(1.2) translate(5%, 10%)' },
+                            '66%': { transform: 'scale(1.1) translate(-5%, 5%)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' },
+                        }
+                    }
+                },
+            }
         }
     </script>
-<style>
-        .mesh-bg {
-            background-color: #111318;
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(109,100%,50%,0.05) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, hsla(109,100%,50%,0.05) 0px, transparent 50%);
+    <style>
+        :root {
+            --glass-blur: 40px;
+            --primary-glow: rgba(0, 245, 255, 0.4);
+            --accent-glow: rgba(112, 0, 255, 0.3);
         }
+
+        body {
+            background-color: #030308;
+            overflow-x: hidden;
+            color: #F8FAFC;
+        }
+
+        .mesh-gradient {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 70% 30%, #7000FF 0%, transparent 40%),
+                radial-gradient(circle at 30% 70%, #00F5FF 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #FF00FF 0%, transparent 40%);
+            filter: blur(120px);
+            opacity: 0.25;
+            animation: mesh-float 25s ease-in-out infinite alternate;
+        }
+
         .glass-panel {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-            border-left: 1px solid rgba(255, 255, 255, 0.05);
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                inset 0 1px 1px rgba(255, 255, 255, 0.05),
+                0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
-        .glow-button {
-            box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+
+        .glass-panel-heavy {
+            background: rgba(10, 10, 20, 0.6);
+            backdrop-filter: blur(60px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
+        .shimmer-text {
+            background: linear-gradient(90deg, #94a3b8, #f8fafc, #94a3b8);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 5s linear infinite;
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .btn-primary-glass {
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.2), rgba(112, 0, 255, 0.2));
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 245, 255, 0.1);
+        }
+
+        .btn-primary-glass:hover {
+            border-color: #00F5FF;
+            box-shadow: 0 0 30px var(--primary-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Custom Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
             height: 24px;
             width: 24px;
             border-radius: 50%;
-            background: #39FF14;
+            background: #F8FAFC;
             cursor: pointer;
-            box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+            margin-top: -10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            border: 4px solid #030308;
+            transition: all 0.2s ease;
         }
-        input[type=range]::-moz-range-thumb {
-            height: 24px;
-            width: 24px;
-            border-radius: 50%;
-            background: #39FF14;
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
-            border: none;
+
+        input[type=range]:active::-webkit-slider-thumb {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px #00F5FF;
+        }
+
+        .strength-indicator {
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .strength-indicator::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: var(--strength-width, 0%);
+            background: var(--strength-color, #ef4444);
+            box-shadow: 0 0 10px var(--strength-color);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Toggle Styling */
+        .toggle-bg {
+            transition: all 0.3s ease;
+        }
+        .toggle-dot {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
     </style>
 </head>
-<body class="bg-background text-on-surface mesh-bg min-h-screen flex flex-col font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 border-b border-white/10 bg-neutral-950/50 backdrop-blur-xl shadow-none">
-<div class="flex items-center justify-between px-6 py-4 max-w-[640px] mx-auto">
-<div class="-translate-x-3 sm:-translate-x-6 text-2xl font-black text-white uppercase font-mono tracking-[0.12em]">
-                CYPHER_GEN
+<body class="font-body selection:bg-primary/30 antialiased">
+    <div class="mesh-gradient"></div>
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 py-4 px-8 flex justify-center">
+        <div class="max-w-4xl w-full glass-panel py-3 px-6 rounded-2xl flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center border border-white/10">
+                    <span class="material-symbols-outlined text-primary text-xl">grain</span>
+                </div>
+                <span class="font-brand font-bold text-lg tracking-wide">SecureByte</span>
             </div>
-<div class="flex items-center gap-4">
-<button aria-label="Security" class="text-neutral-500 hover:text-[#39FF14] transition-colors duration-200 active:scale-95 transition-all duration-150 flex items-center justify-center" type="button">
-<span class="material-symbols-outlined">shield</span>
-</button>
-</div>
-</div>
-</header>
-<!-- Main Content -->
-<main class="flex-grow flex items-center justify-center p-gutter pt-margin-lg pb-margin-lg">
-<div class="w-full max-w-container-max flex flex-col gap-margin-md">
-<!-- Hero / Intro -->
-<div class="text-center flex flex-col gap-margin-xs">
-<h1 class="font-h1 text-h1 text-on-surface">Secure Generation</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant">Configure parameters for optimal entropy.</p>
-</div>
-<!-- Password Display Area -->
-<div class="glass-panel rounded-xl p-margin-md flex flex-col gap-margin-sm relative group">
-<div class="flex justify-between items-center mb-margin-xs">
-<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Output String</span>
-<!-- Strength Chip -->
-<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant">
-<div class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_rgba(0,252,146,0.5)]"></div>
-<span class="font-label-caps text-[10px] text-tertiary">STRONG</span>
-</div>
-</div>
-<div class="flex items-center justify-between gap-4">
-<div class="font-mono-display text-mono-display text-on-surface break-all select-all" data-password-display>
-                        x7#kL9@mP2$vQ8*wN5!cR4^tB1&amp;hY6
+            <div class="flex items-center gap-4">
+                <span class="text-[10px] font-mono text-white/20 uppercase tracking-[0.2em] hidden sm:block">Quantum Layer Active</span>
+                <button class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/5 transition-colors">
+                    <span class="material-symbols-outlined text-white/40 text-lg">info</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="min-h-screen pt-32 pb-20 px-6 flex items-center justify-center">
+        <div class="w-full max-w-2xl flex flex-col gap-8">
+            
+            <!-- Hero Title -->
+            <div class="text-center space-y-3">
+                <h1 class="text-4xl md:text-5xl font-brand font-bold shimmer-text">SecureByte</h1>
+                <p class="text-white/40 text-sm md:text-base font-light tracking-wide">Small Bytes, Big Security.</p>
+            </div>
+
+            <!-- Main Panel -->
+            <div class="glass-panel-heavy rounded-[2.5rem] p-10 md:p-12 space-y-12 relative overflow-hidden">
+                <div class="absolute top-0 left-1/4 w-1/2 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                
+                <!-- Display Section -->
+                <div class="space-y-6">
+                    <div class="glass-panel rounded-3xl p-8 flex flex-col gap-6 relative group overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        <div class="flex justify-between items-center relative z-10">
+                            <span class="text-[10px] uppercase tracking-[0.3em] text-white/30 font-bold">Generated Output</span>
+                            <div class="flex items-center gap-2">
+                                <span id="strength-label" class="text-[9px] font-bold uppercase tracking-widest text-white/40">Secure</span>
+                                <div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#00F5FF]"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6 relative z-10">
+                            <div class="flex-grow font-mono text-2xl md:text-4xl text-white/90 break-all select-all tracking-tight" id="password-display">
+                                ••••••••••••••••
+                            </div>
+                            <button id="copy-btn" class="w-16 h-16 rounded-2xl btn-glass flex items-center justify-center group/btn active:scale-95">
+                                <span class="material-symbols-outlined text-white/60 group-hover/btn:text-primary transition-colors">content_copy</span>
+                            </button>
+                        </div>
+                        <div class="strength-indicator w-full relative z-10" id="strength-meter"></div>
                     </div>
-<button aria-label="Copy password" class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg bg-surface-container hover:bg-surface-bright transition-colors border border-outline-variant text-primary group-hover:text-primary-container" data-copy type="button">
-<span class="material-symbols-outlined">content_copy</span>
-</button>
-</div>
-</div>
-<!-- Controls Grid -->
-<div class="glass-panel rounded-xl p-margin-md flex flex-col gap-margin-md">
-<!-- Length Slider -->
-<div class="flex flex-col gap-margin-sm">
-<div class="flex justify-between items-center">
-<label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Character Length</label>
-<span class="font-mono-display text-body-lg text-primary" data-length-value>32</span>
-</div>
-<div class="relative flex items-center h-8">
-<div class="absolute w-full h-[2px] bg-surface-container rounded-full overflow-hidden">
-<div class="h-full bg-primary w-1/2" data-length-progress></div>
-</div>
-<input aria-label="Password length" class="w-full absolute appearance-none bg-transparent outline-none z-10" max="64" min="8" type="range" value="32"/>
-</div>
-<div class="flex justify-between text-[10px] font-mono-display text-outline">
-<span>8</span>
-<span>64</span>
-</div>
-</div>
-<hr class="border-outline-variant/30"/>
-<!-- Toggles -->
-<div class="flex flex-col gap-margin-sm">
-<span class="font-label-caps text-label-caps text-on-surface-variant uppercase mb-unit">Inclusions</span>
-<label class="flex items-center justify-between group cursor-pointer p-2 -mx-2 rounded-lg hover:bg-surface-container/50 transition-colors">
-<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Uppercase Letters (A-Z)</span>
-<div class="relative w-12 h-6 rounded-full bg-primary/20 border border-primary transition-colors">
-<div class="absolute right-1 top-1 w-4 h-4 rounded-full bg-primary shadow-[0_0_8px_rgba(57,255,20,0.6)] transition-all"></div>
-</div>
-</label>
-<label class="flex items-center justify-between group cursor-pointer p-2 -mx-2 rounded-lg hover:bg-surface-container/50 transition-colors">
-<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Numbers (0-9)</span>
-<div class="relative w-12 h-6 rounded-full bg-primary/20 border border-primary transition-colors">
-<div class="absolute right-1 top-1 w-4 h-4 rounded-full bg-primary shadow-[0_0_8px_rgba(57,255,20,0.6)] transition-all"></div>
-</div>
-</label>
-<label class="flex items-center justify-between group cursor-pointer p-2 -mx-2 rounded-lg hover:bg-surface-container/50 transition-colors">
-<span class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Symbols (!@#$*)</span>
-<div class="relative w-12 h-6 rounded-full bg-primary/20 border border-primary transition-colors">
-<div class="absolute right-1 top-1 w-4 h-4 rounded-full bg-primary shadow-[0_0_8px_rgba(57,255,20,0.6)] transition-all"></div>
-</div>
-</label>
-</div>
-</div>
-<!-- Generate Action -->
-<button class="w-full py-4 px-6 rounded-xl bg-primary text-on-primary font-h2 text-h2 glow-button hover:bg-primary-container hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-margin-xs" type="button">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">refresh</span>
-                Regenerate Cypher
-            </button>
-</div>
-</main>
-<!-- Footer -->
-<footer class="w-full mt-auto border-t border-white/5 bg-transparent">
-<div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 max-w-[640px] mx-auto gap-4">
-<div class="text-neutral-600 font-medium font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-[#39FF14]" data-footer-status>
-                © 2024 CYPHER_GEN. SECURE_PROTOCOL_ACTIVE.
+                </div>
+
+                <!-- Controls Grid -->
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Length -->
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-end px-1">
+                            <label class="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">Entropy Depth</label>
+                            <span class="text-4xl font-brand font-bold text-white/90" id="length-value">32</span>
+                        </div>
+                        <input type="range" id="length-slider" min="8" max="64" value="32">
+                        <div class="flex justify-between text-[8px] font-mono text-white/20 uppercase tracking-widest">
+                            <span>Sequence Alpha</span>
+                            <span>Sequence Omega</span>
+                        </div>
+                    </div>
+
+                    <!-- Options -->
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] block mb-6 px-1">Protocol Layers</label>
+                        
+                        <label class="flex items-center justify-between cursor-pointer group px-4 py-3 rounded-2xl hover:bg-white/[0.02] transition-colors">
+                            <span class="text-sm font-medium text-white/60 group-hover:text-white transition-colors">Alpha-Upper</span>
+                            <div class="relative">
+                                <input type="checkbox" checked id="toggle-upper" class="sr-only peer">
+                                <div class="w-11 h-6 rounded-full glass-panel border-white/10 peer-checked:border-primary/50 peer-checked:bg-primary/10 transition-all duration-300"></div>
+                                <div class="absolute left-1 top-1 w-4 h-4 rounded-full bg-white/20 peer-checked:bg-primary peer-checked:translate-x-5 transition-all duration-300 shadow-lg"></div>
+                            </div>
+                        </label>
+
+                        <label class="flex items-center justify-between cursor-pointer group px-4 py-3 rounded-2xl hover:bg-white/[0.02] transition-colors">
+                            <span class="text-sm font-medium text-white/60 group-hover:text-white transition-colors">Numeric-Delta</span>
+                            <div class="relative">
+                                <input type="checkbox" checked id="toggle-numbers" class="sr-only peer">
+                                <div class="w-11 h-6 rounded-full glass-panel border-white/10 peer-checked:border-primary/50 peer-checked:bg-primary/10 transition-all duration-300"></div>
+                                <div class="absolute left-1 top-1 w-4 h-4 rounded-full bg-white/20 peer-checked:bg-primary peer-checked:translate-x-5 transition-all duration-300 shadow-lg"></div>
+                            </div>
+                        </label>
+
+                        <label class="flex items-center justify-between cursor-pointer group px-4 py-3 rounded-2xl hover:bg-white/[0.02] transition-colors">
+                            <span class="text-sm font-medium text-white/60 group-hover:text-white transition-colors">Symbolic-Sigma</span>
+                            <div class="relative">
+                                <input type="checkbox" checked id="toggle-symbols" class="sr-only peer">
+                                <div class="w-11 h-6 rounded-full glass-panel border-white/10 peer-checked:border-primary/50 peer-checked:bg-primary/10 transition-all duration-300"></div>
+                                <div class="absolute left-1 top-1 w-4 h-4 rounded-full bg-white/20 peer-checked:bg-primary peer-checked:translate-x-5 transition-all duration-300 shadow-lg"></div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Generate -->
+                <button id="generate-btn" class="w-full py-6 rounded-3xl btn-primary-glass font-mono font-bold text-base uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all">
+                    <span class="material-symbols-outlined text-xl">refresh</span>
+                    Regenerate Password
+                </button>
             </div>
-<div class="flex gap-4">
-<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-neutral-600 hover:text-[#39FF14] transition-opacity cursor-pointer opacity-80 hover:opacity-100" href="#">Security Specs</a>
-<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-neutral-600 hover:text-[#39FF14] transition-opacity cursor-pointer opacity-80 hover:opacity-100" href="#">Audit Log</a>
-<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-neutral-600 hover:text-[#39FF14] transition-opacity cursor-pointer opacity-80 hover:opacity-100" href="#">Privacy</a>
-</div>
-</div>
-</footer>
-<script>
-    const passwordDisplay = document.querySelector('[data-password-display]');
-    const lengthValue = document.querySelector('[data-length-value]');
-    const lengthProgress = document.querySelector('[data-length-progress]');
-    const lengthSlider = document.querySelector('input[type="range"]');
-    const generateBtn = document.querySelector('button.glow-button');
-    const copyBtn = document.querySelector('[data-copy]');
-    const footerStatus = document.querySelector('[data-footer-status]');
-    const toggles = document.querySelectorAll('label.group');
-    const API_BASE_URL = 'http://127.0.0.1:5000';
-    const LOWERCASE = 'abcdefghijklmnopqrstuvwxyz';
-    const UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const NUMBERS = '0123456789';
-    const SYMBOLS = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+        </div>
+    </main>
 
-    footerStatus.textContent = '\u00A9 2024 CYPHER_GEN. SECURE_PROTOCOL_ACTIVE.';
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/[0.03]">
+        <div class="max-w-4xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-8 opacity-60 hover:opacity-100 transition-opacity duration-500">
+            <div class="flex items-center gap-4">
+                <div class="w-1 h-1 rounded-full bg-primary animate-ping"></div>
+                <span class="text-[10px] font-mono tracking-widest uppercase text-white/40">Encryption Status: Nominal</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/40">Designed & Developed by</span>
+                <span class="text-[9px] font-bold uppercase tracking-[0.2em] text-primary">Shreeharsh</span>
+            </div>
+        </div>
+    </footer>
 
-    function setSwitchState(toggle, isActive) {
-        toggle.setAttribute('data-active', String(isActive));
-        const switchDiv = toggle.querySelector('.relative.w-12');
-        const knob = switchDiv.querySelector('div');
+    <script>
+        /**
+         * SecureByte Application Core
+         * Handles entropy generation, strength analysis, and UI orchestration.
+         */
+        const SecureByte = {
+            API_URL: 'http://127.0.0.1:5000',
+            CHARS: {
+                lower: 'abcdefghijklmnopqrstuvwxyz',
+                upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                num: '0123456789',
+                sym: '!@#$%^&*()_+-=[]{}|;:,.<>?'
+            },
+            
+            init() {
+                console.log('SecureByte Core initialized');
+                this.cacheElements();
+                this.bindEvents();
+                this.generate();
+            },
 
-        switchDiv.classList.toggle('bg-primary/20', isActive);
-        switchDiv.classList.toggle('border-primary', isActive);
-        switchDiv.classList.toggle('bg-surface-container', !isActive);
-        switchDiv.classList.toggle('border-outline-variant', !isActive);
-        knob.classList.toggle('right-1', isActive);
-        knob.classList.toggle('left-1', !isActive);
-    }
+            cacheElements() {
+                this.el = {
+                    display: document.getElementById('password-display'),
+                    copyBtn: document.getElementById('copy-btn'),
+                    generateBtn: document.getElementById('generate-btn'),
+                    slider: document.getElementById('length-slider'),
+                    lengthVal: document.getElementById('length-value'),
+                    toggles: {
+                        upper: document.getElementById('toggle-upper'),
+                        numbers: document.getElementById('toggle-numbers'),
+                        symbols: document.getElementById('toggle-symbols')
+                    },
+                    strength: {
+                        meter: document.getElementById('strength-meter'),
+                        label: document.getElementById('strength-label')
+                    }
+                };
+            },
 
-    function updateLengthDisplay() {
-        const min = Number(lengthSlider.min);
-        const max = Number(lengthSlider.max);
-        const value = Number(lengthSlider.value);
-        const percent = ((value - min) / (max - min)) * 100;
+            bindEvents() {
+                // Generate triggers
+                this.el.generateBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.generate();
+                });
+                
+                this.el.slider.addEventListener('input', (e) => {
+                    this.el.lengthVal.textContent = e.target.value;
+                });
+                
+                this.el.slider.addEventListener('change', () => this.generate());
+                
+                Object.values(this.el.toggles).forEach(toggle => {
+                    toggle.addEventListener('change', () => this.generate());
+                });
 
-        lengthValue.textContent = value;
-        lengthProgress.style.width = `${percent}%`;
-    }
+                // Copy logic
+                this.el.copyBtn.addEventListener('click', () => this.copyToClipboard());
+            },
 
-    function getSecureIndex(max) {
-        const values = new Uint32Array(1);
-        const limit = Math.floor(0x100000000 / max) * max;
+            async generate() {
+                const { display, slider, toggles } = this.el;
+                
+                display.classList.add('opacity-40', 'blur-sm');
+                
+                const params = new URLSearchParams({
+                    length: slider.value,
+                    upper: toggles.upper.checked,
+                    numbers: toggles.numbers.checked,
+                    symbols: toggles.symbols.checked
+                });
 
-        do {
-            crypto.getRandomValues(values);
-        } while (values[0] >= limit);
+                let password = '';
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 1500);
+                    
+                    const response = await fetch(`${this.API_URL}/generate?${params}`, { signal: controller.signal });
+                    clearTimeout(timeoutId);
+                    
+                    if (!response.ok) throw new Error();
+                    const data = await response.json();
+                    password = data.password;
+                } catch (err) {
+                    password = this.generateLocal();
+                }
 
-        return values[0] % max;
-    }
+                setTimeout(() => {
+                    display.textContent = password;
+                    display.classList.remove('opacity-40', 'blur-sm');
+                    this.updateStrength(password);
+                }, 100);
+            },
 
-    function generateLocalPassword(length, includeUpper, includeNumbers, includeSymbols) {
-        if (!crypto?.getRandomValues) {
-            throw new Error('Secure random generation is not available in this browser.');
-        }
+            generateLocal() {
+                const length = parseInt(this.el.slider.value);
+                const { toggles } = this.el;
+                
+                let set = this.CHARS.lower;
+                if (toggles.upper.checked) set += this.CHARS.upper;
+                if (toggles.numbers.checked) set += this.CHARS.num;
+                if (toggles.symbols.checked) set += this.CHARS.sym;
 
-        let characters = LOWERCASE;
-        if (includeUpper) characters += UPPERCASE;
-        if (includeNumbers) characters += NUMBERS;
-        if (includeSymbols) characters += SYMBOLS;
+                const array = new Uint32Array(length);
+                window.crypto.getRandomValues(array);
+                
+                return Array.from(array)
+                    .map(x => set[x % set.length])
+                    .join('');
+            },
 
-        return Array.from({ length }, () => characters[getSecureIndex(characters.length)]).join('');
-    }
+            updateStrength(password) {
+                if (!password || password.includes('•')) return;
+                
+                let score = 0;
+                if (password.length > 10) score++;
+                if (password.length > 16) score++;
+                if (/[A-Z]/.test(password)) score++;
+                if (/[0-9]/.test(password)) score++;
+                if (/[^A-Za-z0-9]/.test(password)) score++;
 
-    // Initialize toggles with data attributes
-    toggles.forEach((toggle) => {
-        setSwitchState(toggle, true);
-        toggle.addEventListener('click', () => {
-            const isActive = toggle.getAttribute('data-active') === 'true';
-            setSwitchState(toggle, !isActive);
-            generatePassword();
-        });
-    });
+                const config = [
+                    { label: 'Weak', color: '#ef4444', width: '20%' },
+                    { label: 'Fair', color: '#f59e0b', width: '40%' },
+                    { label: 'Strong', color: '#10b981', width: '60%' },
+                    { label: 'Secure', color: '#00F5FF', width: '85%' },
+                    { label: 'Quantum', color: '#7000FF', width: '100%' }
+                ];
 
-    // Update length display
-    lengthSlider.addEventListener('input', updateLengthDisplay);
-    lengthSlider.addEventListener('change', generatePassword);
+                const rating = config[score - 1] || config[0];
+                const { meter, label } = this.el.strength;
+                
+                meter.style.setProperty('--strength-width', rating.width);
+                meter.style.setProperty('--strength-color', rating.color);
+                label.textContent = rating.label;
+                label.style.color = rating.color;
+            },
 
-    // Generate password
-    async function generatePassword() {
-        const length = lengthSlider.value;
-        const upper = toggles[0].getAttribute('data-active') === 'true';
-        const numbers = toggles[1].getAttribute('data-active') === 'true';
-        const symbols = toggles[2].getAttribute('data-active') === 'true';
+            async copyToClipboard() {
+                const text = this.el.display.textContent;
+                if (!text || text.includes('•')) return;
 
-        try {
-            const response = await fetch(`${API_BASE_URL}/generate?length=${length}&upper=${upper}&numbers=${numbers}&symbols=${symbols}`);
-            const data = await response.json();
-
-            if (!response.ok) {
-                throw new Error(data.error || 'Unable to generate password');
+                try {
+                    await navigator.clipboard.writeText(text);
+                    const btn = this.el.copyBtn;
+                    const originalHTML = btn.innerHTML;
+                    
+                    btn.innerHTML = '<span class="material-symbols-outlined text-primary scale-110">check_circle</span>';
+                    btn.classList.add('border-primary/40');
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = originalHTML;
+                        btn.classList.remove('border-primary/40');
+                    }, 2000);
+                } catch (err) {
+                    console.error('SecureByte: Clipboard access denied');
+                }
             }
+        };
 
-            passwordDisplay.textContent = data.password;
-        } catch (error) {
-            console.warn('Backend unavailable; generated password in the browser.', error);
-            try {
-                passwordDisplay.textContent = generateLocalPassword(Number(length), upper, numbers, symbols);
-            } catch (fallbackError) {
-                alert(fallbackError.message);
-            }
+        // Boot
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => SecureByte.init());
+        } else {
+            SecureByte.init();
         }
-    }
+    </script>
 
-    generateBtn.addEventListener('click', generatePassword);
 
-    // Copy to clipboard
-    copyBtn.addEventListener('click', async () => {
-        try {
-            await navigator.clipboard.writeText(passwordDisplay.textContent);
-            // Visual feedback
-            copyBtn.innerHTML = '<span class="material-symbols-outlined">check</span>';
-            setTimeout(() => {
-                copyBtn.innerHTML = '<span class="material-symbols-outlined">content_copy</span>';
-            }, 1000);
-        } catch (error) {
-            alert('Failed to copy to clipboard');
-        }
-    });
+</body>
+</html>
 
-    // Generate initial password
-    updateLengthDisplay();
-    generatePassword();
-</script>
-</body></html>
