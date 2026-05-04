@@ -14,9 +14,10 @@ A secure and customizable password generator with a modern web interface and a P
 ## 📁 Project Structure
 
 SecureByte/
-│── Backend/      # Flask API for password generation logic
-│── index.html    # Main Frontend interface (Root level)
-│── requirements.txt
+│── Backend/            # Flask API for password generation logic
+│   │── logic.py        # Core generation engine
+│   └── requirements.txt
+└── index.html          # Main Frontend interface (Root level)
 
 ---
 
@@ -24,16 +25,22 @@ SecureByte/
 
 ### 1. Clone the Repository
 
+```bash
 git clone https://github.com/shreeharsh-patil/SecureByte.git
 cd SecureByte
+```
 
 ### 2. Install Dependencies
 
-pip install -r requirements.txt
+```bash
+pip install -r Backend/requirements.txt
+```
 
 ### 3. Run the Backend Server
 
+```bash
 python Backend/logic.py
+```
 
 ### 4. Open the Frontend
 
@@ -47,7 +54,8 @@ Open `index.html` in your browser.
 * 🔠 Include/exclude uppercase letters
 * 🔢 Include/exclude numbers
 * 🔣 Include/exclude special symbols
-* ⚡ Real-time password generation
+* 🛡️ Real-time password strength meter
+* ⚡ Instant generation (Backend + Local fallback)
 * 📋 Copy to clipboard functionality
 * 🌙 Modern dark theme with glassmorphism UI
 
@@ -55,38 +63,26 @@ Open `index.html` in your browser.
 
 ## ⚙️ How It Works
 
-* The backend (Flask) generates secure passwords using random character combinations
-* The frontend (HTML/CSS/JS) communicates with the backend and displays results instantly
+* The backend (Flask) generates secure passwords using `secrets` module for cryptographically strong entropy.
+* The frontend (HTML/CSS/JS) communicates with the backend and provides a seamless UI.
+* **Fallback Mode:** If the backend is unreachable, SecureByte switches to local `window.crypto` generation to ensure zero downtime.
 
 ---
 
 ## 📡 API Documentation
 
-See: `Backend/README.md`
-
----
-
-## 🧪 Example Output
-
-Generated Password: G7@kP!9zQ#
-
----
-
-## 🎯 Purpose
-
-* Demonstrates full-stack development
-* Implements secure password generation
-* Shows API communication between frontend and backend
-* Focuses on clean UI/UX design
+SecureByte provides a simple REST API:
+- `GET /generate?length=32&upper=true&numbers=true&symbols=true`
+- `GET /health`
 
 ---
 
 ## 🚀 Future Improvements
 
-* 🔒 Password strength meter
-* 💾 Save password history locally
+* 💾 Save password history locally (IndexedDB)
 * 🌐 Deploy as a live web application
 * 👤 Add user authentication
+* 📱 Progressive Web App (PWA) support
 
 ---
 
@@ -94,18 +90,7 @@ Generated Password: G7@kP!9zQ#
 
 Developed by **Shreeharsh Patil**
 
-GitHub: https://github.com/shreeharsh-patil/SecureByte
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome!
-
-1. Fork the repository
-2. Create a new branch
-3. Commit your changes
-4. Submit a pull request
+GitHub: [shreeharsh-patil](https://github.com/shreeharsh-patil)
 
 ---
 
