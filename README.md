@@ -1,4 +1,4 @@
-# Password Generator
+# SecureByte - Advanced Password Generator
 
 A secure password generator with a modern web interface and Python backend.
 
@@ -10,11 +10,13 @@ A secure password generator with a modern web interface and Python backend.
 ## Quick Start
 
 1. Install Python dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```
 
 2. Start the backend server:
+
    ```bash
    python Backend/logic.py
    ```
