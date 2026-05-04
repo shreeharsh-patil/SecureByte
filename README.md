@@ -10,13 +10,6 @@
 
 A secure and customizable password generator with a modern web interface and a Python backend. **SecureByte** helps users generate strong, random, and reliable passwords instantly.
 
----
-
-## 📸 Demo
-
-![SecureByte Screenshot](assets/screenshot.png)
-
----
 
 ## 📁 Project Structure
 
