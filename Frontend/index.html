@@ -7,7 +7,6 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
@@ -206,13 +205,13 @@
                 CYPHER_GEN
             </div>
 <div class="flex items-center gap-4">
-<button class="text-neutral-500 hover:text-[#39FF14] transition-colors duration-200 active:scale-95 transition-all duration-150 flex items-center justify-center">
+<button aria-label="History" class="text-neutral-500 hover:text-[#39FF14] transition-colors duration-200 active:scale-95 transition-all duration-150 flex items-center justify-center" type="button">
 <span class="material-symbols-outlined">history</span>
 </button>
-<button class="text-neutral-500 hover:text-[#39FF14] transition-colors duration-200 active:scale-95 transition-all duration-150 flex items-center justify-center">
+<button aria-label="Settings" class="text-neutral-500 hover:text-[#39FF14] transition-colors duration-200 active:scale-95 transition-all duration-150 flex items-center justify-center" type="button">
 <span class="material-symbols-outlined">settings</span>
 </button>
-<button class="text-neutral-500 hover:text-[#39FF14] transition-colors duration-200 active:scale-95 transition-all duration-150 flex items-center justify-center">
+<button aria-label="Security" class="text-neutral-500 hover:text-[#39FF14] transition-colors duration-200 active:scale-95 transition-all duration-150 flex items-center justify-center" type="button">
 <span class="material-symbols-outlined">shield</span>
 </button>
 </div>
@@ -237,10 +236,10 @@
 </div>
 </div>
 <div class="flex items-center justify-between gap-4">
-<div class="font-mono-display text-mono-display text-on-surface break-all select-all">
+<div class="font-mono-display text-mono-display text-on-surface break-all select-all" data-password-display>
                         x7#kL9@mP2$vQ8*wN5!cR4^tB1&amp;hY6
                     </div>
-<button class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg bg-surface-container hover:bg-surface-bright transition-colors border border-outline-variant text-primary group-hover:text-primary-container">
+<button aria-label="Copy password" class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg bg-surface-container hover:bg-surface-bright transition-colors border border-outline-variant text-primary group-hover:text-primary-container" data-copy type="button">
 <span class="material-symbols-outlined">content_copy</span>
 </button>
 </div>
@@ -251,13 +250,13 @@
 <div class="flex flex-col gap-margin-sm">
 <div class="flex justify-between items-center">
 <label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Character Length</label>
-<span class="font-mono-display text-body-lg text-primary">32</span>
+<span class="font-mono-display text-body-lg text-primary" data-length-value>32</span>
 </div>
 <div class="relative flex items-center h-8">
 <div class="absolute w-full h-[2px] bg-surface-container rounded-full overflow-hidden">
-<div class="h-full bg-primary w-1/2"></div>
+<div class="h-full bg-primary w-1/2" data-length-progress></div>
 </div>
-<input class="w-full absolute appearance-none bg-transparent outline-none z-10" max="64" min="8" type="range" value="32"/>
+<input aria-label="Password length" class="w-full absolute appearance-none bg-transparent outline-none z-10" max="64" min="8" type="range" value="32"/>
 </div>
 <div class="flex justify-between text-[10px] font-mono-display text-outline">
 <span>8</span>
@@ -289,7 +288,7 @@
 </div>
 </div>
 <!-- Generate Action -->
-<button class="w-full py-4 px-6 rounded-xl bg-primary text-on-primary font-h2 text-h2 glow-button hover:bg-primary-container hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-margin-xs">
+<button class="w-full py-4 px-6 rounded-xl bg-primary text-on-primary font-h2 text-h2 glow-button hover:bg-primary-container hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-margin-xs" type="button">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">refresh</span>
                 Regenerate Cypher
             </button>
@@ -298,7 +297,7 @@
 <!-- Footer -->
 <footer class="w-full mt-auto border-t border-white/5 bg-transparent">
 <div class="flex flex-col md:flex-row justify-between items-center px-8 py-12 max-w-[640px] mx-auto gap-4">
-<div class="text-neutral-600 font-medium font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-[#39FF14]">
+<div class="text-neutral-600 font-medium font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-[#39FF14]" data-footer-status>
                 © 2024 CYPHER_GEN. SECURE_PROTOCOL_ACTIVE.
             </div>
 <div class="flex gap-4">
@@ -309,37 +308,82 @@
 </div>
 </footer>
 <script>
-    const passwordDisplay = document.querySelector('.font-mono-display');
-    const lengthValue = document.querySelector('.font-mono-display.text-primary');
+    const passwordDisplay = document.querySelector('[data-password-display]');
+    const lengthValue = document.querySelector('[data-length-value]');
+    const lengthProgress = document.querySelector('[data-length-progress]');
     const lengthSlider = document.querySelector('input[type="range"]');
     const generateBtn = document.querySelector('button.glow-button');
-    const copyBtn = document.querySelector('button[title="content_copy"]');
+    const copyBtn = document.querySelector('[data-copy]');
+    const footerStatus = document.querySelector('[data-footer-status]');
     const toggles = document.querySelectorAll('label.group');
+    const API_BASE_URL = 'http://127.0.0.1:5000';
+    const LOWERCASE = 'abcdefghijklmnopqrstuvwxyz';
+    const UPPERCASE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const NUMBERS = '0123456789';
+    const SYMBOLS = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+    footerStatus.textContent = '\u00A9 2024 CYPHER_GEN. SECURE_PROTOCOL_ACTIVE.';
+
+    function setSwitchState(toggle, isActive) {
+        toggle.setAttribute('data-active', String(isActive));
+        const switchDiv = toggle.querySelector('.relative.w-12');
+        const knob = switchDiv.querySelector('div');
+
+        switchDiv.classList.toggle('bg-primary/20', isActive);
+        switchDiv.classList.toggle('border-primary', isActive);
+        switchDiv.classList.toggle('bg-surface-container', !isActive);
+        switchDiv.classList.toggle('border-outline-variant', !isActive);
+        knob.classList.toggle('right-1', isActive);
+        knob.classList.toggle('left-1', !isActive);
+    }
+
+    function updateLengthDisplay() {
+        const min = Number(lengthSlider.min);
+        const max = Number(lengthSlider.max);
+        const value = Number(lengthSlider.value);
+        const percent = ((value - min) / (max - min)) * 100;
+
+        lengthValue.textContent = value;
+        lengthProgress.style.width = `${percent}%`;
+    }
+
+    function getSecureIndex(max) {
+        const values = new Uint32Array(1);
+        const limit = Math.floor(0x100000000 / max) * max;
+
+        do {
+            crypto.getRandomValues(values);
+        } while (values[0] >= limit);
+
+        return values[0] % max;
+    }
+
+    function generateLocalPassword(length, includeUpper, includeNumbers, includeSymbols) {
+        if (!crypto?.getRandomValues) {
+            throw new Error('Secure random generation is not available in this browser.');
+        }
+
+        let characters = LOWERCASE;
+        if (includeUpper) characters += UPPERCASE;
+        if (includeNumbers) characters += NUMBERS;
+        if (includeSymbols) characters += SYMBOLS;
+
+        return Array.from({ length }, () => characters[getSecureIndex(characters.length)]).join('');
+    }
 
     // Initialize toggles with data attributes
-    toggles.forEach((toggle, index) => {
-        toggle.setAttribute('data-active', 'true');
+    toggles.forEach((toggle) => {
+        setSwitchState(toggle, true);
         toggle.addEventListener('click', () => {
             const isActive = toggle.getAttribute('data-active') === 'true';
-            toggle.setAttribute('data-active', !isActive);
-            const switchDiv = toggle.querySelector('.relative.w-12');
-            if (!isActive) {
-                switchDiv.classList.add('bg-primary/20', 'border-primary');
-                switchDiv.querySelector('div').classList.add('right-1');
-                switchDiv.querySelector('div').classList.remove('left-1');
-            } else {
-                switchDiv.classList.remove('bg-primary/20', 'border-primary');
-                switchDiv.classList.add('bg-surface-container', 'border-outline-variant');
-                switchDiv.querySelector('div').classList.add('left-1');
-                switchDiv.querySelector('div').classList.remove('right-1');
-            }
+            setSwitchState(toggle, !isActive);
+            generatePassword();
         });
     });
 
     // Update length display
-    lengthSlider.addEventListener('input', (e) => {
-        lengthValue.textContent = e.target.value;
-    });
+    lengthSlider.addEventListener('input', updateLengthDisplay);
+    lengthSlider.addEventListener('change', generatePassword);
 
     // Generate password
     async function generatePassword() {
@@ -349,15 +393,21 @@
         const symbols = toggles[2].getAttribute('data-active') === 'true';
 
         try {
-            const response = await fetch(`http://localhost:5000/generate?length=${length}&upper=${upper}&numbers=${numbers}&symbols=${symbols}`);
+            const response = await fetch(`${API_BASE_URL}/generate?length=${length}&upper=${upper}&numbers=${numbers}&symbols=${symbols}`);
             const data = await response.json();
-            if (data.password) {
-                passwordDisplay.textContent = data.password;
-            } else {
-                alert('Error: ' + data.error);
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Unable to generate password');
             }
+
+            passwordDisplay.textContent = data.password;
         } catch (error) {
-            alert('Failed to connect to backend. Make sure the server is running.');
+            console.warn('Backend unavailable; generated password in the browser.', error);
+            try {
+                passwordDisplay.textContent = generateLocalPassword(Number(length), upper, numbers, symbols);
+            } catch (fallbackError) {
+                alert(fallbackError.message);
+            }
         }
     }
 
@@ -378,6 +428,7 @@
     });
 
     // Generate initial password
+    updateLengthDisplay();
     generatePassword();
 </script>
 </body></html>

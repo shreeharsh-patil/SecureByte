@@ -1,8 +1,17 @@
 from flask import Flask, request, jsonify
-import random
+import secrets
 import string
 
 app = Flask(__name__)
+
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
+
 
 def generate_password(length=12, include_upper=True, include_numbers=True, include_symbols=True):
     characters = ''
@@ -17,8 +26,14 @@ def generate_password(length=12, include_upper=True, include_numbers=True, inclu
     if not characters:
         characters = string.ascii_lowercase  # fallback
 
-    password = ''.join(random.choice(characters) for _ in range(length))
+    password = ''.join(secrets.choice(characters) for _ in range(length))
     return password
+
+
+@app.route('/health', methods=['GET'])
+def health():
+    return jsonify({'status': 'ok'})
+
 
 @app.route('/generate', methods=['GET'])
 def generate():
